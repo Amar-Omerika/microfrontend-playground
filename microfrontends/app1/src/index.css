@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* App1-specific global styles */
+.app1-wrapper {
+  --app1-primary-color: #3b82f6;
+}
