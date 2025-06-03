@@ -1,10 +1,30 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 
-const App = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-500">
-    <h1 className="text-4xl font-bold text-white">Hello Tailwind + TypeScript!</h1>
-  </div>
-);
+// Layout and components
+import Layout from "./components/Layout";
+import Home from "./components/Home";
+import MicroFrontendWrapper from "./components/MicroFrontendWrapper";
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route 
+            path="app1/*" 
+            element={<MicroFrontendWrapper name="app1" host="http://localhost:3001" />} 
+          />
+          <Route 
+            path="app2/*" 
+            element={<MicroFrontendWrapper name="app2" host="http://localhost:3002" />} 
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default App;
