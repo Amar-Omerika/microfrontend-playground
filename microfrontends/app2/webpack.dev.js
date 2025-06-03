@@ -16,16 +16,18 @@ const devConfig = {
       name: 'app2',
       filename: 'remoteEntry.js',
       exposes: {
-        './App2Index': './src/bootstrap'
+        './App2Index': './src/bootstrap.tsx'
       },
       shared: {
         react: { 
           singleton: true, 
-          requiredVersion: '^19.1.0' 
+          requiredVersion: '^19.1.0', 
+          eager: true 
         },
         'react-dom': { 
           singleton: true, 
-          requiredVersion: '^19.1.0' 
+          requiredVersion: '^19.1.0', 
+          eager: true 
         },
         'react-router-dom': { 
           singleton: true, 
