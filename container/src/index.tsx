@@ -1,5 +1,6 @@
 // Bootstrap file for Module Federation
 // This file ensures all remote modules are loaded before rendering the app
+import './index.css';
 
 // Import the shared dependencies
 // The dynamic imports ensure webpack doesn't bundle these with the main chunk
