@@ -8,9 +8,13 @@ interface SharedState {
   reset: () => void;
 }
 
-export const useSharedStore = create<SharedState>((set) => ({
+type SetState = {
+  set: (fn: (state: SharedState) => Partial<SharedState> | SharedState) => void;
+}
+
+export const useSharedStore = create<SharedState>((set: (partial: Partial<SharedState> | ((state: SharedState) => Partial<SharedState>)) => void) => ({
   count: 0,
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  decrement: () => set((state) => ({ count: state.count - 1 })),
+  increment: () => set((state: SharedState) => ({ count: state.count + 1 })),
+  decrement: () => set((state: SharedState) => ({ count: state.count - 1 })),
   reset: () => set({ count: 0 }),
 }));
